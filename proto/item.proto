@@ -4,14 +4,20 @@ option csharp_namespace = "EposeaLocalBackend.gRPC.Proto.Item";
 
 package eposea.item;
 
+import "google/protobuf/empty.proto";
+
 service ItemService {
- rpc GetItem(GetItemRequest) returns (Item);
+    rpc CreateItem(Item) returns (Item);
+    rpc GetItem(ItemFilter) returns (Item);
+    rpc UpdateItem(Item) returns (Item);
+    rpc RemoveItem(ItemFilter) returns (google.protobuf.Empty);
 }
-message GetItemRequest{
+message ItemFilter{
     int32 id = 1;
 }
 message Item {
     int32 id = 1;
     string title = 2;
     string description = 3;
+    int32 section_id = 4;
 }

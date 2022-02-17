@@ -5,11 +5,15 @@ option csharp_namespace = "EposeaLocalBackend.gRPC.Proto.Course";
 package eposea.course;
 
 import "section.proto";
+import "google/protobuf/empty.proto";
 
 service CourseService {
- rpc GetCourse(GetCourseRequest) returns (Course);
+ rpc CreateCourse(Course) returns (Course);
+ rpc GetCourse(CourseFilter) returns (Course);
+ rpc UpdateCourse(Course) returns (Course);
+ rpc RemoveCourse(CourseFilter) returns (google.protobuf.Empty);
 }
-message GetCourseRequest{
+message CourseFilter{
     int32 id = 1;
 }
 message Course {
