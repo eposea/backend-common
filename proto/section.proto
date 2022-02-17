@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+
+option csharp_namespace = "EposeaLocalBackend.gRPC.Proto.Section";
+
+package eposea.section;
+
+import "item.proto";
+
+service SectionService {
+ rpc GetSection(GetSectionRequest) returns (Section);
+
+}
+message GetSectionRequest{
+    int32 id = 1;
+}
+message Section{
+    int32 id = 1;
+    string title = 2;
+    repeated item.Item items = 3;
+}

@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "EposeaLocalBackend.gRPC.Proto.Course";
+
+package eposea.course;
+
+import "section.proto";
+
+service CourseService {
+ rpc GetCourse(GetCourseRequest) returns (Course);
+}
+message GetCourseRequest{
+    int32 id = 1;
+}
+message Course {
+    int32 id = 1;
+    string title = 2;
+    string description = 3;
+    repeated section.Section sections = 4;
+}   
