@@ -1,26 +1,15 @@
 ﻿syntax = "proto3";
 
-
 option csharp_namespace = "EposeaLocalBackend.gRPC.Proto.Section";
+option java_package = "eposea.local";
+option java_multiple_files = true;
 
 package eposea.section;
 
-import "google/protobuf/empty.proto";
 import "item.proto";
 
-service SectionService {
-   rpc CreateSection(Section) returns (Section);
-   rpc GetSection(SectionFilter) returns (Section);
-   rpc UpdateSection(Section) returns (Section);
-   rpc RemoveSection(SectionFilter) returns (google.protobuf.Empty);
-
-}
-message SectionFilter{
-    int32 id = 1;
-}
 message Section{
-    int32 id = 1;
-    string title = 2;
+    string id = 1;
+    optional string title = 2;
     repeated item.Item items = 3;
-    int32 course_id = 4;
 }
