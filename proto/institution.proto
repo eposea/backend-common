@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "EposeaLocalBackend.gRPC.Proto.Section";
+option java_package = "eposea.local";
+option java_multiple_files = true;
+
+package eposea.institution;
+
+import "section.proto";
+import "course.proto";
+
+service InstitutionService {
+    rpc GetInstitution(GetInstitutionRequest) returns (Institution);
+    rpc UpdateInstitution(UpdateInstitutionRequest) returns (Institution);
+}
+
+message GetInstitutionRequest {}
+
+message UpdateInstitutionRequest {
+    optional string name = 1;
+    optional string description = 2;
+    optional string imageUrl = 3;
+    repeated section.Section sections = 4;
+    repeated course.Course courses = 5;
+}
+
+message Institution {
+    string name = 1;
+    optional string descrption = 2;
+    optional string imageUrl = 3;
+    repeated section.Section sections = 4;
+    repeated course.Course courses = 5;
+}

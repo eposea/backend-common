@@ -1,6 +1,8 @@
 ﻿syntax = "proto3";
 
 option csharp_namespace = "EposeaLocalBackend.gRPC.Proto.Course";
+option java_package = "eposea.local";
+option java_multiple_files = true;
 
 package eposea.course;
 
@@ -8,17 +10,35 @@ import "section.proto";
 import "google/protobuf/empty.proto";
 
 service CourseService {
- rpc CreateCourse(Course) returns (Course);
- rpc GetCourse(CourseFilter) returns (Course);
- rpc UpdateCourse(Course) returns (Course);
- rpc RemoveCourse(CourseFilter) returns (google.protobuf.Empty);
+    rpc CreateCourse(CreateCourseRequest) returns (Course);
+    rpc GetCourse(GetCourseRequest) returns (Course);
+    rpc UpdateCourse(UpdateCourseRequest) returns (Course);
+    rpc DeleteCourse(DeleteCourseRequest) returns (google.protobuf.Empty);
 }
-message CourseFilter{
-    int32 id = 1;
+
+message CreateCourseRequest {
+    optional string title = 1;
+    optional string description = 2;
+    repeated section.Section sections = 3;
 }
+
+message GetCourseRequest {
+    string id = 1;
+}
+
+message UpdateCourseRequest {
+    string id = 1;
+    optional string title = 2;
+    optional string description = 3;
+}
+
+message DeleteCourseRequest {
+    string id = 1;
+}
+
 message Course {
-    int32 id = 1;
+    string id = 1;
     string title = 2;
-    string description = 3;
+    optional string description = 3;
     repeated section.Section sections = 4;
 }   
