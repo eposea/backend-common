@@ -17,7 +17,7 @@ service InstitutionService {
 message GetInstitutionRequest {}
 
 message UpdateInstitutionRequest {
-    optional string name = 1;
+    optional string title = 1;
     optional string description = 2;
     optional string imageUrl = 3;
     repeated section.Section sections = 4;
@@ -25,8 +25,8 @@ message UpdateInstitutionRequest {
 }
 
 message Institution {
-    string name = 1;
-    optional string descrption = 2;
+    string title = 1;
+    optional string description = 2;
     optional string imageUrl = 3;
     repeated section.Section sections = 4;
     repeated course.Course courses = 5;
