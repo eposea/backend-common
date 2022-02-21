@@ -9,7 +9,6 @@ package eposea.section;
 import "item.proto";
 
 message Section{
-    string id = 1;
-    optional string title = 2;
-    repeated item.Item items = 3;
+    string title = 1;
+    repeated item.Item items = 2;
 }
